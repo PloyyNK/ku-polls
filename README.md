@@ -15,5 +15,5 @@ to be added.
 
 ## Project Documents
 
-[Project Wiki](../../wiki/Home)
+All project documents are in [Project Wiki](../../wiki/Home)
 
