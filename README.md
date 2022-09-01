@@ -18,4 +18,4 @@ All project documents are in [Project Wiki](../../wiki/Home)
 
 - [Vision Statement](../../wiki/Vision%20Statement)
 - [Requirements](../../wiki/Requirements)
-- [Software Development Plan](../../wiki/Software%20Development%20Plann) 
+- [Software Development Plan](../../wiki/Software%20Development%20Plan) 
