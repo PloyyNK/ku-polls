@@ -18,4 +18,5 @@ All project documents are in [Project Wiki](../../wiki/Home)
 
 - [Vision Statement](../../wiki/Vision%20Statement)
 - [Requirements](../../wiki/Requirements)
-- [Software Development Plan](../../wiki/Software%20Development%20Plan) 
+- [Software Development Plan](../../wiki/Software%20Development%20Plan)
+- [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Task Board](https://github.com/users/PloyyNK/projects/3/views/1)
