@@ -1,7 +1,9 @@
-{% extends "admin/base.html" %} {% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %} {% block branding %}
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | {{ sitetitle|default:_('Django site admin')}}{% endblock %}
 
 {% block branding %}
-<h1 id="ku-polls"><a href="{% url 'admin:index' %}">Polls Administration</a></h1>
+<h1 id="site-name"><a href="{% url 'admin:index' %}">KU Polls Administration</a></h1>
 {% endblock %}
 
-{% endblock %} {% block nav-global %}{% endblock %}
+{% block nav-global %}{% endblock %}
