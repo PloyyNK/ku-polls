@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
 from django.utils import timezone
+from django.contrib import messages
 
 from .models import Choice, Question
 
@@ -15,6 +16,9 @@ def index(request):
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
+    if not question.can_vote():
+        messages.error(request, "Voting is not available")
+        return redirect('polls:index')
     return render(request, 'polls/detail.html', {'question': question})
 
 
@@ -37,6 +41,13 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
+
+    def get(self, request, *args, **kwargs):
+        question = get_object_or_404(Question, pk=kwargs['pk'])
+        if not question.can_vote():
+            messages.error(request, "Voting is not allow")
+            return redirect('polls:index')
+        return render(request, 'polls/detail.html', {'question': question})
 
 
 class ResultsView(generic.DetailView):
@@ -61,4 +72,3 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
-
