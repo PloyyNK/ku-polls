@@ -9,12 +9,24 @@ from .models import Choice, Question
 
 
 def index(request):
+    """
+    Display all questions in order of publication date
+
+    Returns:
+        HttpResponseObject -- index page
+    """
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
     return render(request, 'polls/index.html', context)
 
 
 def detail(request, question_id):
+    """
+        Display details of selected question
+
+        Returns:
+            HttpResponseObject -- detail page
+        """
     question = get_object_or_404(Question, pk=question_id)
     if not question.can_vote():
         messages.error(request, "Voting is not available")
@@ -23,6 +35,12 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
+    """
+        Display result of selected question
+
+        Returns:
+            HttpResponseObject -- result page
+        """
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
 
@@ -39,10 +57,12 @@ class IndexView(generic.ListView):
 
 
 class DetailView(generic.DetailView):
+    """Detail view page"""
     model = Question
     template_name = 'polls/detail.html'
 
     def get(self, request, *args, **kwargs):
+        """Check if the question is available to vote"""
         question = get_object_or_404(Question, pk=kwargs['pk'])
         if not question.can_vote():
             messages.error(request, "Voting is not allow")
@@ -51,11 +71,18 @@ class DetailView(generic.DetailView):
 
 
 class ResultsView(generic.DetailView):
+    """Result view page"""
     model = Question
     template_name = 'polls/results.html'
 
 
 def vote(request, question_id):
+    """
+    Display the vote result of selected questions.
+
+        Returns:
+        HttpResponseObject -- vote page
+        """
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])

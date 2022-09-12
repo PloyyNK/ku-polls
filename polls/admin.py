@@ -3,11 +3,13 @@ from .models import Choice, Question
 
 
 class ChoiceInline(admin.TabularInline):
+    """Admin start with 3 choice per question"""
     model = Choice
     extra = 3
 
 
 class QuestionAdmin(admin.ModelAdmin):
+    """Model in admin page"""
     fieldsets = [
         (None,               {'fields': ['question_text']}),
         ('Date information', {'fields': ['pub_date', 'end_date'], 'classes': ['collapse']}),
