@@ -60,7 +60,7 @@ class QuestionModelTests(TestCase):
         question = Question(pub_date=pub, end_date=end)
         self.assertIs(question.can_vote(), False)
 
-    def Test_null_end_date(self):
+    def test_null_end_date(self):
         """Voting is always on if no end date"""
         pub = timezone.now() - datetime.timedelta(days=1, seconds=1)
         question = Question(pub_date=pub, end_date=None)
