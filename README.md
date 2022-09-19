@@ -22,3 +22,9 @@ All project documents are in [Project Wiki](../../wiki/Home)
 - [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Task Board](https://github.com/users/PloyyNK/projects/3/views/1)
 - [Iteration 2 Plan](../../wiki/Iteration%202%20Plan)
 - [Iteration 3 Plan](../../wiki/Iteration%203%20Plan)
+
+
+| Username  | Password  |
+|-----------|-----------|
+|   harry   | hackme22 |
+|   peteparker   | spiderman |
