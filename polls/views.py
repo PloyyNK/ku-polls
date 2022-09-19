@@ -4,6 +4,9 @@ from django.views import generic
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
 
 from .models import Choice, Question
 
@@ -76,6 +79,7 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
+@login_required
 def vote(request, question_id):
     """
     Display the vote result of selected questions.
