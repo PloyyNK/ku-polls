@@ -105,12 +105,8 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        try:
-            user_vote = Vote.objects.get(user=user)
-            user_vote.choice = selected_choice
-            user_vote.save()
-        except Vote.DoesNotExist:
-            Vote.objects.create(choice=selected_choice, user=user).save()
+        selected_choice.votes += 1
+        selected_choice.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
