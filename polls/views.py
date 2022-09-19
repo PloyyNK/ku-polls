@@ -79,7 +79,7 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
-@login_required(login_url='/accounts/login/')
+@login_required
 def vote(request, question_id):
     """
     Display the vote result of selected questions.
