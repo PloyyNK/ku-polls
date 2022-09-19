@@ -1,6 +1,14 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+{% if user.is_authenticated %}
+<label>{{"Hello, "}}</label><user>{{user.username}}</user>
+<a href="{% url 'logout' %}" style="color: white">Logout</a>
+{% else %}
+<a href="{% url 'login' %}" style="color: red">Login</a>
+{% endif %}
+
+
 {% if messages %}
     <ul class="messages">
         {% for msg in messages %}
