@@ -76,7 +76,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_REDIRECT_URL = '/polls/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'
+LOGOUT_REDIRECT_URL = '/accounts/logout/'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
