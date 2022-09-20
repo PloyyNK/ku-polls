@@ -1,9 +1,13 @@
- <html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
+<html>
    <body>
-   <h2>Logged out</h2>
+   <h2 style="white">You are now logged out</h2>
    <p>
    Do you want to vote again?
-   <a href="{% url 'login'%}">Login again</a>
+   <a href="{% url 'login'%}" style="white">Login again</a>
    Or view without login
-      <a href="{% url 'polls:index'%}">Polls List</a>
+      <a href="{% url 'polls:index'%}" style="white">Polls List</a>
    </body>
