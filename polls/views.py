@@ -80,7 +80,8 @@ class DetailView(LoginRequiredMixin, generic.DetailView):
         if not request.user.is_authenticated:
             messages.error(request, "Please login first")
             return redirect('login')
-        return render(request, 'polls/detail.html', {'question': question})
+        select_vote = get_vote_for_user(question, request.user)
+        return render(request, 'polls/detail.html', {'question': question, 'vote': select_vote})
 
 
 class ResultsView(generic.DetailView):
@@ -118,7 +119,7 @@ def vote(request, question_id):
         # selected_choice.save()
         select_vote = get_vote_for_user(question, request.user)
         if not get_vote_for_user(question, request.user):
-            select_vote = Vote(user=request.user, choice=selected_choice)
+            Vote.objects.create(user=request.user, choice=selected_choice)
         else:
             select_vote.choice = selected_choice
         select_vote.save()
