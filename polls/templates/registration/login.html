@@ -1,0 +1,27 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
+<html>
+<body>
+<h2 style="color: white">Login</h2>
+<form method="post">
+  {% csrf_token %}
+  <table>
+  {{ form.as_table }}
+  </table>
+  <p>
+  <button type="submit">Login</button>
+  </p>
+  <input type="hidden" name="next" value="{{next}}"/>
+ </form>
+{# If you have a password_reset template, then add here #}
+<p>
+<a href="{% url 'password_reset' %}" style="color: white">Forgot password?</a>
+  <p>
+  <label style="color: white">{{"View result without login"}}</label>
+<a href="{% url 'polls:index' %}" style="color: white">Go to poll list</a>
+  </p>
+</p>
+</body>
+</html>

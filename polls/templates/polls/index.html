@@ -1,6 +1,15 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+<h1 style="color: white">WELCOME TO KU POLL</h1>
+{% if user.is_authenticated %}
+<h3>{{"Hello, "}} <user>{{user.username }}</user> <a href="{% url 'logout' %}" style="color: white">Logout</a></h3>
+
+{% else %}
+<a href="{% url 'login' %}" style="color: red">Login</a>
+{% endif %}
+
+
 {% if messages %}
     <ul class="messages">
         {% for msg in messages %}
@@ -14,7 +23,6 @@
     {% for question in latest_question_list %}
         <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
         <a href="{% url 'polls:results' question.id %}" style="color: red">Result</a></li>
-
     {% endfor %}
     </ul>
 {% else %}
