@@ -91,6 +91,7 @@ class ResultsView(generic.DetailView):
 
 
 def get_vote_for_user(question: Question, user: User):
+    """Get vote for user in each question"""
     try:
         return Vote.objects.get(user=user, choice__question=question)
     except Vote.DoesNotExist:

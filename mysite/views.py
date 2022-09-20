@@ -4,4 +4,5 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 def index(request):
+    """Redirect to index page for empty url"""
     return redirect('polls:index')
