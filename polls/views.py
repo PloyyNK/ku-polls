@@ -6,6 +6,8 @@ from django.utils import timezone
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+import logging
+from django.contrib.auth.models import User
 
 from .models import Choice, Question, Vote
 
@@ -87,6 +89,13 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
+def get_vote_for_user(question: Question, user: User):
+    try:
+        return Vote.objects.get(user=user, choice__question=question)
+    except Vote.DoesNotExist:
+        return None
+
+
 @login_required
 def vote(request, question_id):
     """
@@ -105,8 +114,14 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
+        # selected_choice.votes += 1
+        # selected_choice.save()
+        select_vote = get_vote_for_user(question, request.user)
+        if not get_vote_for_user(question, request.user):
+            select_vote = Vote(user=request.user, choice=selected_choice)
+        else:
+            select_vote.choice = selected_choice
+        select_vote.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
