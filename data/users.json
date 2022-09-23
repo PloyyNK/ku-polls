@@ -1,0 +1,56 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$Sh4xvpfrBq0OL6SRSvazEC$aLazYkeqXMcOgkx+kzYsOVfIRRHniYKp+cEIAi8xVDQ=",
+    "last_login": "2022-09-20T14:13:00.094Z",
+    "is_superuser": true,
+    "username": "ploynk",
+    "first_name": "",
+    "last_name": "",
+    "email": "nartnatta.k@ku.th",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2022-09-03T18:28:53.836Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$yk7luRb8hm54GWONDvsMMy$K41WBixrG8/DXr+9RdiWI+Oa9vLKeenikAJhSHuLF4U=",
+    "last_login": "2022-09-20T14:29:23.040Z",
+    "is_superuser": false,
+    "username": "harry",
+    "first_name": "Harry",
+    "last_name": "",
+    "email": "harry@hackerone.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-09-15T07:40:45.088Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$390000$cER92EK1NUa2lTfuEIDP4b$jg/KR7RifAPM3564UC1efzQArTP+D+rMaai/ILVhtvs=",
+    "last_login": "2022-09-20T14:46:53.871Z",
+    "is_superuser": false,
+    "username": "peteparker",
+    "first_name": "",
+    "last_name": "",
+    "email": "peteparker@mcu.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2022-09-19T21:03:12.276Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
