@@ -10,7 +10,28 @@ https://cpske.github.io/ISP) course at Kasetsart University.
 
 ## Install and Run
 
-to be added.
+1. Clone the repository
+```
+git clone https://github.com/PloyyNK/ku-polls.git
+```
+2. Install require package
+```
+pip install -r requirement.txt
+```
+3. Change `sample.env` name to `.env`
+4. Run migrations
+```
+python manage.py migrate
+```
+5. Install data
+```
+python manage.py loaddata data/polls.json data/user.json
+```
+6. Run the server
+```
+python manage.py runserver
+```
+You can now visit the server  `http://127.0.0.1:8000/`
 
 ## Project Documents
 
@@ -22,6 +43,7 @@ All project documents are in [Project Wiki](../../wiki/Home)
 - [Iteration 1 Plan](../../wiki/Iteration%201%20Plan) and [Task Board](https://github.com/users/PloyyNK/projects/3/views/1)
 - [Iteration 2 Plan](../../wiki/Iteration%202%20Plan)
 - [Iteration 3 Plan](../../wiki/Iteration%203%20Plan)
+- [Iteration 4 Plan](../../wiki/Iteration%204%20Plan)
 
 
 | Username  | Password  |
