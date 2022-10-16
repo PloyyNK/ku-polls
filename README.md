@@ -1,4 +1,5 @@
 ## Online Polls and Survey
+[![Unittest](https://github.com/PloyyNK/ku-polls/actions/workflows/python-app.yml/badge.svg)](https://github.com/PloyyNK/ku-polls/actions/workflows/python-app.yml)
 
 An application for conducting online polls and surveys based
 on Django, with additional features.
