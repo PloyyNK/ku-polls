@@ -45,15 +45,6 @@ class QuestionModelTests(TestCase):
         question = Question(pub_date=time)
         self.assertIs(question.can_vote(), True)
 
-    def test_date_same_with_end_date(self):
-        """
-        current date/time is exactly the end date, the vote is still available
-        """
-        end = timezone.now()
-        pub = timezone.now() - datetime.timedelta(days=1, seconds=1)
-        question = Question(pub_date=pub, end_date=end)
-        self.assertIs(question.can_vote(), True)
-
     def test_current_date_after_end_date(self):
         """Voting is not allow after end date"""
         end = timezone.now() - datetime.timedelta(days=1, seconds=1)
@@ -173,7 +164,7 @@ class UserAuthTest(TestCase):
         self.user1.first_name = "Tester"
         self.user1.save()
         # we need a poll question to test voting
-        q = Question.create("First Poll Question")
+        q = Question.objects.create("First Poll Question")
         q.save()
         # a few choices
         for n in range(1, 4):
