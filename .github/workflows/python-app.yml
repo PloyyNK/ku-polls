@@ -36,7 +36,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with unittest
       run: |
-        python -m unittest
+        python manage.py test polls
     - name: Test code cov.
       run: |
         coverage run manage.py test polls
