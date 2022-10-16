@@ -20,7 +20,7 @@ class IndexView(generic.ListView):
         """
         Excludes any questions that aren't published yet.
         """
-        return Question.objects.filter(pub_date__lte=timezone.now())
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by("-pub_date")[:5]
 
 
 class DetailView(LoginRequiredMixin, generic.DetailView):
@@ -36,7 +36,7 @@ class DetailView(LoginRequiredMixin, generic.DetailView):
 
     def get(self, request, *args, **kwargs):
         """Check if the question is available to vote"""
-        question = get_object_or_404(Question, pk=kwargs['pk'])
+        question = get_object_or_404(Question, pk=kwargs["question_id"])
         if not question.can_vote():
             messages.error(request, "Voting is not allow")
             return redirect('polls:index')
