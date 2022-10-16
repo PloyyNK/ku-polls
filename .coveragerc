@@ -1,0 +1,9 @@
+[run]
+branch = True
+omit =
+    mysite/*
+    polls/migrations/*
+    polls/__inti__.py
+    polls/admin.py
+    manage.py
+    polls/tests.py
