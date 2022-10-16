@@ -12,43 +12,6 @@ from django.contrib.auth.models import User
 from .models import Choice, Question, Vote
 
 
-def index(request):
-    """
-    Display all questions in order of publication date
-
-    Returns:
-        HttpResponseObject -- index page
-    """
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list}
-    return render(request, 'polls/index.html', context)
-
-
-def detail(request, question_id):
-    """
-        Display details of selected question
-
-        Returns:
-            HttpResponseObject -- detail page
-        """
-    question = get_object_or_404(Question, pk=question_id)
-    if not question.can_vote():
-        messages.error(request, "Voting is not available")
-        return redirect('polls:index')
-    return render(request, 'polls/detail.html', {'question': question})
-
-
-def results(request, question_id):
-    """
-        Display result of selected question
-
-        Returns:
-            HttpResponseObject -- result page
-        """
-    question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/results.html', {'question': question})
-
-
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
